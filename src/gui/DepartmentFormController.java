@@ -72,7 +72,7 @@ public class DepartmentFormController implements Initializable {
 			notifyDataChangeListeners();
 			Utils.currentStage(event).close();
 		} catch (ValidationException e) {
-			setErrorMessages(e.getErros());
+			setErrorMessages(e.getErrors());
 		} catch (DbException e) {
 			Alerts.showAlert("Error save object", null, e.getMessage(), AlertType.ERROR);
 		}
@@ -96,7 +96,7 @@ public class DepartmentFormController implements Initializable {
 		}
 		obj.setName(txtName.getText());
 
-		if (exception.getErros().size() > 0) {
+		if (exception.getErrors().size() > 0) {
 			throw exception;
 		}
 		return obj;
@@ -108,8 +108,8 @@ public class DepartmentFormController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-
+	public void initialize(URL url, ResourceBundle rb) {
+		initializeNodes();
 	}
 
 	private void initializeNodes() {
